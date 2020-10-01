@@ -3,12 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { NgxVideoScrollingModule } from 'projects/ngx-video-scrolling/src/public-api';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgxVideoScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

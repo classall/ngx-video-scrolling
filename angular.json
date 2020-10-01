@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-video-scrolling": {
+    "ngx-video-scrolling-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-video-scrolling",
+            "outputPath": "dist/ngx-video-scrolling-demo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-video-scrolling:build"
+            "browserTarget": "ngx-video-scrolling-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-video-scrolling:build:production"
+              "browserTarget": "ngx-video-scrolling-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-video-scrolling:build"
+            "browserTarget": "ngx-video-scrolling-demo:build"
           }
         },
         "test": {
@@ -114,15 +114,59 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-video-scrolling:serve"
+            "devServerTarget": "ngx-video-scrolling-demo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-video-scrolling:serve:production"
+              "devServerTarget": "ngx-video-scrolling-demo:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "ngx-video-scrolling"
+    },
+    "ngx-video-scrolling": {
+      "projectType": "library",
+      "root": "projects/ngx-video-scrolling",
+      "sourceRoot": "projects/ngx-video-scrolling/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-video-scrolling/tsconfig.lib.json",
+            "project": "projects/ngx-video-scrolling/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-video-scrolling/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-video-scrolling/src/test.ts",
+            "tsConfig": "projects/ngx-video-scrolling/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-video-scrolling/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-video-scrolling/tsconfig.lib.json",
+              "projects/ngx-video-scrolling/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-video-scrolling-demo",
+  "cli": {
+    "analytics": "685e0c00-3ec0-4c61-b037-975706f2718f"
+  }
 }

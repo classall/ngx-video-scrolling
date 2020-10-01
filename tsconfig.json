@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-video-scrolling": [
+        "dist/ngx-video-scrolling/ngx-video-scrolling",
+        "dist/ngx-video-scrolling"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

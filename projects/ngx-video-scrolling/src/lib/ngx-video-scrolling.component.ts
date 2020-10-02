@@ -22,6 +22,7 @@ export class NgxVideoScrollingComponent implements OnChanges {
   public ngOnChanges() {
     if (this.videoSource) {
       this.setVideoLoadListener();
+      // Prevent requestAnimationFrame from triggering Angular change detection
       this.ngZone.runOutsideAngular(() => this.animate());
     }
   }
@@ -40,7 +41,17 @@ export class NgxVideoScrollingComponent implements OnChanges {
     const bodyRect = this.setHeight.nativeElement.getBoundingClientRect();
     this.frameNumber = -bodyRect.y / this.frameDivider;
     this.videoElement.nativeElement.currentTime = this.frameNumber;
-    window.requestAnimationFrame(this.scrollPlay.bind(this));
+
+    if (this.frameNumber > 0) {
+      // Wait for seek event before next frame
+      this.videoElement.nativeElement.onseeked = () => {
+        this.videoElement.nativeElement.onseeked = null;
+        window.requestAnimationFrame(this.scrollPlay.bind(this));
+      };
+    } else {
+      // Video didn't start yet
+      window.requestAnimationFrame(this.scrollPlay.bind(this));
+    }
   }
 
 }

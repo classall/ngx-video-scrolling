@@ -1,6 +1,19 @@
 {
   "name": "ngx-video-scrolling",
   "version": "0.0.2",
+  "description": "An angular component allowing video scrubbing on scroll.",
+  "licence": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/classall/ngx-video-scrolling"
+  },
+  "bugs": {
+    "url": "https://github.com/classall/ngx-video-scrolling/issues"
+  },
+  "author": {
+    "name": "Corentin Lassalle",
+    "email": "corentin.lssll@gmail.com"
+  },
   "peerDependencies": {
     "@angular/common": "^9.1.12",
     "@angular/core": "^9.1.12"

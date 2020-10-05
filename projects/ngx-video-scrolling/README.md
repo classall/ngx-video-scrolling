@@ -1,24 +1,45 @@
 # NgxVideoScrolling
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.12.
+An angular component allowing video scrubbing on scroll.
+This project is based on this [CodePen](https://codepen.io/ollieRogers/pen/lfeLc).
 
-## Code scaffolding
+## Demo
 
-Run `ng generate component component-name --project ngx-video-scrolling` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-video-scrolling`.
-> Note: Don't forget to add `--project ngx-video-scrolling` or else it will be added to the default project in your `angular.json` file. 
+Working demo [here](https://ngx-video-scrolling.herokuapp.com/).
 
-## Build
+## Installation
 
-Run `ng build ngx-video-scrolling` to build the project. The build artifacts will be stored in the `dist/` directory.
+To install this library, run :
 
-## Publishing
+```bash
+$ npm install ngx-video-scrolling
+```
 
-After building your library with `ng build ngx-video-scrolling`, go to the dist folder `cd dist/ngx-video-scrolling` and run `npm publish`.
+and then add it into your `AppModule` :
 
-## Running unit tests
+```typescript
+import { NgxVideoScrollingModule } from 'ngx-video-scrolling';
 
-Run `ng test ngx-video-scrolling` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@NgModule({
+  imports: [
+    NgxVideoScrollingModule
+  ],
+  [ ... ]
+})
+export class AppModule { }
+```
 
-## Further help
+You can now use its component :
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```xml
+<ngx-video-scrolling [videoSource]="'../assets/test.mp4'"></ngx-video-scrolling>
+```
+
+
+## Parameters
+
+| Input         | Default Value | Optional      | Description                              |
+| ------------- | ------------- | ------------- | ---------------------------------------- |
+| videoSource   | undefined     | false         | Video                                    |
+| frameNumber   | 0             | true          | The frame number to start the video from |
+| frameDivider  | 1000          | true          | Video speed divider                      |

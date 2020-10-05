@@ -1,6 +1,6 @@
 {
   "name": "ngx-video-scrolling",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "An angular component allowing video scrubbing on scroll.",
   "licence": "MIT",
   "repository": {

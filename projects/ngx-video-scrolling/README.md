@@ -38,8 +38,8 @@ You can now use its component :
 
 ## Parameters
 
-| Input         | Default Value | Optional      | Description                              |
-| ------------- | ------------- | ------------- | ---------------------------------------- |
-| videoSource   | undefined     | false         | Video                                    |
-| frameNumber   | 0             | true          | The frame number to start the video from |
-| frameDivider  | 1000          | true          | Video speed divider                      |
+| Input         | Default Value | Optional      | Description                                           |
+| ------------- | ------------- | ------------- | ----------------------------------------------------- |
+| videoSource   | undefined     | false         | Video file path                                       |
+| frameNumber   | 0             | true          | The frame number to start the video from (in seconds) |
+| frameDivider  | 1000          | true          | Number of pixels to scroll to scrub one second        |

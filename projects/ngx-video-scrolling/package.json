@@ -1,11 +1,17 @@
 {
   "name": "ngx-video-scrolling",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "peerDependencies": {
     "@angular/common": "^9.1.12",
     "@angular/core": "^9.1.12"
   },
   "dependencies": {
     "tslib": "^1.10.0"
-  }
+  },
+  "keywords": [
+    "angular",
+    "video",
+    "scrub",
+    "scroll"
+  ]
 }

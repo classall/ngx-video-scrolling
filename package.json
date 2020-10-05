@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "dev": "ng serve ngx-video-scrolling-demo",
     "start": "node server.js",
     "build": "ng build",
+    "build:lib" : "ng build ngx-video-scrolling --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

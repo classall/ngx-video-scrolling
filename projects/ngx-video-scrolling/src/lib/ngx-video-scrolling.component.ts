@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, NgZone, OnChanges, ViewChild } from '@angular/core';
+import { Tooltip } from '../models/tooltip.model';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -14,6 +15,7 @@ export class NgxVideoScrollingComponent implements OnChanges {
   @Input() public frameNumber = 0;
   // Video speed (less is more ...)
   @Input() public frameDivider = 1000;
+  @Input() public tooltips: Tooltip[] = [];
   @ViewChild('videoElement', { static: true }) public videoElement: ElementRef;
   @ViewChild('setHeight', { static: true }) public setHeight: ElementRef;
 
@@ -25,6 +27,14 @@ export class NgxVideoScrollingComponent implements OnChanges {
       // Prevent requestAnimationFrame from triggering Angular change detection
       this.ngZone.runOutsideAngular(() => this.animate());
     }
+  }
+
+  public setClass(tooltip: Tooltip) {
+    return (tooltip.className ? tooltip.className + ' ' : '') + (tooltip.position ? tooltip.position : 'left');
+  }
+
+  public setStyle(tooltip: Tooltip) {
+    return { top: (tooltip.videoTime * this.frameDivider + this.videoElement.nativeElement.getBoundingClientRect().height) + 'px' };
   }
 
   private setVideoLoadListener() {
@@ -43,6 +53,7 @@ export class NgxVideoScrollingComponent implements OnChanges {
     this.videoElement.nativeElement.currentTime = this.frameNumber;
 
     if (this.frameNumber > 0) {
+      console.log(this.frameNumber);
       // Wait for seek event before next frame
       this.videoElement.nativeElement.onseeked = () => {
         this.videoElement.nativeElement.onseeked = null;

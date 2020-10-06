@@ -43,3 +43,17 @@ You can now use its component :
 | videoSource   | undefined     | false         | Video file path                                       |
 | frameNumber   | 0             | true          | The frame number to start the video from (in seconds) |
 | frameDivider  | 1000          | true          | Number of pixels to scroll to scrub one second        |
+| tooltips      | []            | true          | Array of tooltips (See [tooltips](#tooltips) section) |
+
+### Tooltips
+
+Show customizable tooltips on video
+
+```typescript
+export class Tooltip {
+  public className: string;           // Custom class
+  public text: string;                // Tooltip text
+  public position: 'left' | 'right';  // Whether the tooltip must be on the left or right of the video
+  public videoTime: number;           // Time (in seconds) of the video at which the tooltip should appears
+}
+```

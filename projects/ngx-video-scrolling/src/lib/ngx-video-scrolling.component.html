@@ -1,7 +1,13 @@
-<div ckass="height-filler" #setHeight>
+<div class="height-filler" #setHeight>
+
   <div class="sticky-video-container">
     <video #videoElement autobuffer preload>
       <source [src]="videoSource">
     </video>
+  </div>
+
+  <div *ngFor="let tooltip of tooltips" class="tooltip"
+    [ngClass]="setClass(tooltip)" [ngStyle]="setStyle(tooltip)">
+    <span>{{tooltip.text}}</span>
   </div>
 </div>

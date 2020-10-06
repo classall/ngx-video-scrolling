@@ -29,31 +29,30 @@ export class NgxVideoScrollingComponent implements OnChanges {
     }
   }
 
-  public setClass(tooltip: Tooltip) {
+  public setClass(tooltip: Tooltip): string {
     return (tooltip.className ? tooltip.className + ' ' : '') + (tooltip.position ? tooltip.position : 'left');
   }
 
-  public setStyle(tooltip: Tooltip) {
+  public setStyle(tooltip: Tooltip): { top: string } {
     return { top: (tooltip.videoTime * this.frameDivider + this.videoElement.nativeElement.getBoundingClientRect().height) + 'px' };
   }
 
-  private setVideoLoadListener() {
+  public setVideoLoadListener() {
     this.videoElement.nativeElement.addEventListener('loadedmetadata', () => {
       this.setHeight.nativeElement.style.height = Math.floor(this.videoElement.nativeElement.duration) * this.frameDivider + 'px';
     });
   }
 
-  private animate() {
+  public animate() {
     window.requestAnimationFrame(this.scrollPlay.bind(this));
   }
 
-  private scrollPlay() {
+  public scrollPlay() {
     const bodyRect = this.setHeight.nativeElement.getBoundingClientRect();
     this.frameNumber = -bodyRect.y / this.frameDivider;
     this.videoElement.nativeElement.currentTime = this.frameNumber;
 
     if (this.frameNumber > 0) {
-      console.log(this.frameNumber);
       // Wait for seek event before next frame
       this.videoElement.nativeElement.onseeked = () => {
         this.videoElement.nativeElement.onseeked = null;
